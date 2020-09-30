@@ -28,7 +28,8 @@ function onTick()
     currLength = input.getNumber(7)
     maxLength = input.getNumber(8)
     targetLength = input.getNumber(9)
-
+	origTargetLength = targetLength
+	
     positionWindow = input.getNumber(10)
     if positionWindow == nil or positionWindow == 0 then
         positionWindow = 0.1
@@ -51,6 +52,7 @@ function onTick()
     end
     
     output.setNumber(9, targetLength)
+    output.setBool(5, origTargetLength ~= targetLength)
 
     moveUp = (targetLength - currLength) < 0 - positionWindow
     moveDown = (targetLength - currLength) > positionWindow
